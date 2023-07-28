@@ -22,6 +22,8 @@ runs:
 
     - name: Mkdir .github/classroom
       run: mkdir -p .github/classroom || true
+      shell: bash
 
     - name: Restore autograding file
       run: cp checkhw/.github/classroom/{{ inputs.autograding-file }} .github/classroom/autograding.json
+      shell: bash
