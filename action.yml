@@ -1,0 +1,27 @@
+name: 'Checkout Homework'
+description: 'Checkout git code and homework audograding.json'
+inputs:
+  autograding-file:
+    description: 'File name of autograding.json in fintech-dl-hse/checkhw repo'
+    required: true
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Checkout classroom files
+      uses: actions/checkout@v3
+      with:
+        sparse-checkout: |
+          .github/classroom
+        path: checkhw
+        repository: fintech-dl-hse/checkhw
+
+    - name: Mkdir .github/classroom
+      run: mkdir -p .github/classroom || true
+
+    - name: Restore autograding file
+      run: cp checkhw/.github/classroom/{{ inputs.autograding-file }} .github/classroom/autograding.json
