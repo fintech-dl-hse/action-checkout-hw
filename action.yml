@@ -24,10 +24,6 @@ runs:
       run: mkdir -p .github/classroom
       shell: bash
 
-    - name: Dbg
-      run: ls -la && ls -l .github && ls -l .github/classroom && echo "checkhw/.github/classroom/{{ inputs.autograding-file }}"
-      shell: bash
-
     - name: Restore autograding file
-      run: cp "checkhw/.github/classroom/{{ inputs.autograding-file }}" .github/classroom/autograding.json
+      run: cp "checkhw/.github/classroom/${{ inputs.autograding-file }}" .github/classroom/autograding.json
       shell: bash
