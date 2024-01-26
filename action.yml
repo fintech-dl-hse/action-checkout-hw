@@ -17,6 +17,7 @@ runs:
       with:
         sparse-checkout: |
           .github/classroom
+          scripts
           tests
         path: checkhw
         repository: fintech-dl-hse/checkhw
