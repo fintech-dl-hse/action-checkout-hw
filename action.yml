@@ -27,5 +27,9 @@ runs:
       shell: bash
 
     - name: Restore autograding file
-      run: cp "checkhw/.github/classroom/${{ inputs.autograding-file }}" .github/classroom/autograding.json && rm -rf tests && cp -r checkhw/tests ./tests
+      run: |
+        cp "checkhw/.github/classroom/${{ inputs.autograding-file }}" .github/classroom/autograding.json
+        rm -rf tests scripts
+        cp -r checkhw/tests ./tests
+        cp -r checkhw/scripts ./scripts
       shell: bash
